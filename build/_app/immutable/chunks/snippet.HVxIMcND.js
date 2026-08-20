@@ -1,1 +1,0 @@
-import{y as o,E as f,r as i,v as p,j as c,z as d,A as h}from"./runtime.DXFM950S.js";function y(e,n,...t){var s=e,r=d,a;o(()=>{r!==(r=n())&&(a&&(h(a),a=null),a=i(()=>r(s,...t)))},f),p&&(s=c)}export{y as s};

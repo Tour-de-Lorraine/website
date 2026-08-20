@@ -14,14 +14,14 @@
 	},
 	"type": "module",
 	"peerDependencies": {
-		"svelte": "^5.0.0-next.1"
+		"svelte": "^5.56.10"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.2.4",
 		"@sveltejs/adapter-static": "^3.0.10",
 		"@sveltejs/kit": "^2.0.0",
 		"@sveltejs/package": "^2.0.0",
-		"@sveltejs/vite-plugin-svelte": "^4.0.0-next.6",
+		"@sveltejs/vite-plugin-svelte": "^6.2.4",
 		"@types/eslint": "^9.6.0",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -30,14 +30,16 @@
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"publint": "^0.1.9",
-		"svelte": "^5.0.0-next.1",
-		"svelte-check": "^3.6.0",
+		"puppeteer": "^25.8.0",
+		"svelte": "^5.56.10",
+		"svelte-check": "^4.7.6",
+		"svelte-preprocess": "^6.0.5",
 		"typescript": "^5.0.0",
-		"vite": "^5.0.11"
+		"vite": "^6.4.3"
 	},
 	"dependencies": {
-		"@directus/sdk": "^17.0.0",
-		"@lottiefiles/lottie-player": "^2.0.4",
-		"sass": "^1.77.8"
+		"@directus/sdk": "^25.0.0",
+		"@lottiefiles/lottie-player": "^2.0.12",
+		"sass": "^1.103.0"
 	}
 }
