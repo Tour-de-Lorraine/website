@@ -1,1 +1,0 @@
-export const env={"PUBLIC_DIRECTUS_TOKEN":"dWQfppK2c6Fm6t88RQ-S7R442cEyrnQ8","PUBLIC_DIRECTUS_URL":"https://next.tourdelorraine.ch"}

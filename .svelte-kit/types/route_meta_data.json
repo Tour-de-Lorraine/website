@@ -1,0 +1,50 @@
+{
+	"/(start)": [
+		"src/routes/(start)/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/": [
+		"src/routes/+layout.js"
+	],
+	"/[page=support]": [
+		"src/routes/[page=support]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=privacy]": [
+		"src/routes/[page=privacy]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=imprint]": [
+		"src/routes/[page=imprint]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=current_edition]": [
+		"src/routes/[page=current_edition]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=contact]": [
+		"src/routes/[page=contact]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=association]": [
+		"src/routes/[page=association]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=archive]": [
+		"src/routes/[page=archive]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=current_edition]/event/[slug]": [
+		"src/routes/[page=current_edition]/event/[slug]/+page.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=archive]/[year]": [
+		"src/routes/[page=archive]/[year]/+page.js",
+		"src/routes/+layout.js",
+		"src/routes/+layout.js"
+	],
+	"/[page=archive]/[year]/event/[slug]": [
+		"src/routes/[page=archive]/[year]/event/[slug]/+page.js",
+		"src/routes/+layout.js"
+	]
+}
