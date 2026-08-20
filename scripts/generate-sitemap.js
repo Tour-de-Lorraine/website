@@ -30,7 +30,6 @@ function loadEnv() {
 		}
 		return env;
 	} catch (e) {
-		console.warn('Could not read .env file, using process.env');
 		return process.env;
 	}
 }
@@ -38,15 +37,6 @@ function loadEnv() {
 const env = loadEnv();
 const DIRECTUS_URL = env.PUBLIC_DIRECTUS_URL || 'https://next.tourdelorraine.ch';
 const DIRECTUS_TOKEN = env.PUBLIC_DIRECTUS_TOKEN || '';
-
-if (!DIRECTUS_TOKEN) {
-	console.error('❌ PUBLIC_DIRECTUS_TOKEN is required');
-	process.exit(1);
-}
-
-const directusGraphql = createDirectus(DIRECTUS_URL)
-	.with(staticToken(DIRECTUS_TOKEN))
-	.with(graphql());
 
 const sitemapQuery = `#graphql
 query($lang: String){
@@ -156,20 +146,22 @@ ${urls.map(url => `  <url>
 		
 		console.log(`✅ Generated sitemap.xml with ${urls.length} URLs`);
 		
-		// Generate robots.txt
-		const robotsTxt = `User-agent: *
+	} catch (error) {
+		console.error('❌ Error generating sitemap:', error.message);
+		process.exit(1);
+	}
+}
+
+function generateRobotsTxt() {
+	const robotsTxt = `User-agent: *
 Allow: /
 
 Sitemap: ${SITE_URL}/sitemap.xml
 `;
-		
-		writeFileSync(join(buildDir, 'robots.txt'), robotsTxt);
-		console.log('✅ Generated robots.txt');
-		
-	} catch (error) {
-		console.error('❌ Error generating sitemap:', error);
-		process.exit(1);
-	}
+	
+	const buildDir = join(__dirname, '..', 'build');
+	writeFileSync(join(buildDir, 'robots.txt'), robotsTxt);
+	console.log('✅ Generated robots.txt');
 }
 
 function escapeXml(str) {
@@ -181,4 +173,17 @@ function escapeXml(str) {
 		.replace(/'/g, '&apos;');
 }
 
-generateSitemap();
+// Main execution
+if (!DIRECTUS_TOKEN) {
+	console.warn('⚠️  PUBLIC_DIRECTUS_TOKEN not found. Skipping sitemap generation.');
+	console.warn('   To generate a sitemap, ensure PUBLIC_DIRECTUS_TOKEN is set as an environment variable.');
+	generateRobotsTxt();
+	process.exit(0);
+}
+
+const directusGraphql = createDirectus(DIRECTUS_URL)
+	.with(staticToken(DIRECTUS_TOKEN))
+	.with(graphql());
+
+await generateSitemap();
+generateRobotsTxt();
