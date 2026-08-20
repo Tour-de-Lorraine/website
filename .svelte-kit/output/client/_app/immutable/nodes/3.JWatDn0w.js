@@ -1,1 +1,0 @@
-import{r as e}from"../chunks/gULlE0tz.js";async function r(){throw e(307,"/programm")}const t=Object.freeze(Object.defineProperty({__proto__:null,load:r},Symbol.toStringTag,{value:"Module"}));export{t as universal};
