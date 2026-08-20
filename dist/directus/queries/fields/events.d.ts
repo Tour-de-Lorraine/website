@@ -1,0 +1,11 @@
+export const text: string;
+export const attributes: string;
+export const categories: string;
+export const hero: string;
+export const issues: string;
+export const details: string;
+export const images: string;
+export const videos: string;
+export const allFields: string;
+export const basicFields: string;
+export default allFields;

@@ -1,0 +1,10 @@
+[data-as~='box'] {
+	padding: var(--size-l);
+	@media (max-width: $bp-m-maxWidth) {
+		padding: var(--size-m);
+	}
+
+	@media (max-width: $bp-s-maxWidth) {
+		padding: var(--size-m) var(--size-s);
+	}
+}

@@ -1,0 +1,21 @@
+[data-as~='link-1'] {
+	text-decoration: underline;
+
+	&:hover,
+	&:active,
+	&:focus {
+		font-weight: 600;
+		letter-spacing: -0.024em;
+	}
+}
+
+[data-as~='link-2'] {
+	font-weight: 600;
+	text-transform: uppercase;
+
+	&:hover,
+	&:active,
+	&:focus {
+		text-decoration: underline;
+	}
+}

@@ -1,0 +1,75 @@
+@import './breakpoints.scss';
+
+/*  SIZE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+:root {
+	--size: 1rem;
+	--_size-xs: calc(var(--size) * 0.5);
+	--_size-s: calc(var(--size) * 0.8);
+	--_size-m: calc(var(--size) * 1.8);
+	--_size-l: calc(var(--size) * 3.6);
+	--_size-xl: calc(var(--size) * 7.2);
+	--_size-2xl: calc(var(--size) * 14.4);
+
+	--size-xs: var(--_size-xs);
+	--size-s: var(--_size-s);
+	--size-m: var(--_size-m);
+	--size-l: var(--_size-l);
+	--size-xl: var(--_size-xl);
+	--size-2xl: var(--_size-2xl);
+
+	--size-xs: round(up, var(--_size-xs), 1px);
+	--size-s: round(up, var(--_size-s), 1px);
+	--size-m: round(up, var(--_size-m), 1px);
+	--size-l: round(up, var(--_size-l), 1px);
+	--size-xl: round(up, var(--_size-xl), 1px);
+	--size-2xl: round(up, var(--_size-2xl), 1px);
+
+	--size-100dvh: 100vh;
+	--size-100dvh: 100dvh;
+
+	--size-1dvh: 1vh;
+	--size-1dvh: 1dvh;
+
+	--size-100svh: 90vh;
+	--size-100svh: 100svh;
+
+	--size-1svh: 0.9vh;
+	--size-1svh: 1svh;
+
+	--line-width: 1.6px;
+}
+
+/*  COLORS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+:root {
+	--color-theme-1: rgba(100, 100, 100);
+	--color-theme-2: #c0c0c0;
+	--color-text: black;
+}
+
+/*  TIME
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+:root {
+	--ms-xl: 1500ms;
+	--ms-l: 600ms;
+	--ms-m: 300ms;
+	--ms-s: 100ms;
+
+	--ms-toggleNavigation: 300ms;
+}
+
+/* Z-INDEX
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+:root {
+	--z-front: 100;
+	--z-midFront: 75;
+	--z-center: 50;
+	--z-midBack: 25;
+	--z-back: 0;
+	--z-negative: -1;
+}

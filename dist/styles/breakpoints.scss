@@ -1,0 +1,7 @@
+/*  BREAKPOINTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+$bp-s-maxWidth: 600px;
+$bp-m-maxWidth: 900px;
+$bp-l-maxWidth: 1200px;
+$bp-xl-minWidth: calc($bp-l-maxWidth + 1px);

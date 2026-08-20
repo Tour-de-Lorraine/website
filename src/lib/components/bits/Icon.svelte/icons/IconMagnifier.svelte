@@ -1,0 +1,20 @@
+<script>
+	const props = $props();
+	const attributes = props?.attributes || {};
+</script>
+
+<svg
+	width="34"
+	height="20"
+	viewBox="0 0 34 20"
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+	{...attributes}
+>
+	<path d="M20.7656 14L33.6782 18.8747" stroke="black" stroke-miterlimit="10" />
+	<path
+		d="M17.1407 9.12449C17.1407 11.3685 16.2368 13.3996 14.7777 14.8701C13.3169 16.339 11.2994 17.249 9.07034 17.249C4.6139 17.249 1 13.6108 1 9.12449C1 4.63815 4.6139 1 9.07034 1C13.5268 1 17.1407 4.63815 17.1407 9.12449Z"
+		stroke="black"
+		stroke-miterlimit="10"
+	/>
+</svg>

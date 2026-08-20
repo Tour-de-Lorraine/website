@@ -1,0 +1,33 @@
+c-gallery {
+	display: block;
+	height: 100%;
+	width: 100%;
+	position: relative;
+
+	.content,
+	figure,
+	picture,
+	img {
+		max-height: 100%;
+		max-width: 100%;
+	}
+}
+
+@media (scripting: 'none') {
+	c-gallery {
+		[slot='navigation'] {
+			display: none;
+		}
+	}
+}
+
+@media (scripting: 'enabled') {
+	c-gallery[mode='slideshow'] {
+		display: block;
+		[slot='images'] {
+			> :not([data-is-current='true']) {
+				display: none;
+			}
+		}
+	}
+}

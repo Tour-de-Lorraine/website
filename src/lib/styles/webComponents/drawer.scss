@@ -1,0 +1,74 @@
+// Core
+
+c-drawer {
+	display: block;
+	position: relative;
+	details {
+		transition: var(---c-drawertransition, var(--ms-m, 500ms));
+		position: relative;
+	}
+
+	summary {
+		cursor: pointer;
+		list-style: none;
+		display: block;
+		position: relative;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+	}
+}
+
+c-drawer-group {
+	display: block;
+}
+
+// STYLES
+c-drawer {
+	---c-drawerborderColor: var(--c-drawerborderColor, currentColor);
+	---c-drawerborderWidth: var(--c-drawerborderWidth, 1px);
+	---c-drawerborderCorrection: calc(-1 * var(---c-drawerborderWidth));
+}
+
+c-drawer[data-lines~='top']::before,
+c-drawer[data-lines~='bottom']::after,
+c-drawer[data-lines~='inside'] summary::after,
+c-drawer[data-lines~='all']::before,
+c-drawer[data-lines~='all']::after,
+c-drawer[data-lines~='all'] summary::after {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: var(---c-drawerborderWidth);
+	width: 100%;
+	background-color: black;
+	// Subpixel render improvement:
+	transform: scale(1.0000001);
+}
+
+c-drawer[data-lines~='top']::before,
+c-drawer[data-lines~='all']::before {
+	top: 0;
+}
+
+c-drawer[data-lines~='bottom']::after,
+c-drawer[data-lines~='all']::after {
+	bottom: 0;
+}
+
+c-drawer[data-lines~='inside'] summary::after,
+c-drawer[data-lines~='all'] summary::after {
+	bottom: calc(-1 * var(---c-drawerborderWidth));
+}
+
+// Remove overlapping borders inside of groups:
+// prettier-ignore
+c-drawer[data-lines~='bottom'] + c-drawer[data-lines~='top']::before,
+c-drawer[data-lines~='all'] + c-drawer[data-lines~='top']::before,
+c-drawer[data-lines~='bottom'] + c-drawer[data-lines~='all']::before
+c-drawer[data-lines~='all'] + c-drawer[data-lines~='all']::before {
+	content: unset;
+}
