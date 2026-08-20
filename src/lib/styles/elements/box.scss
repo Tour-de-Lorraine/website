@@ -1,3 +1,5 @@
+@use '../breakpoints' as *;
+
 [data-as~='box'] {
 	padding: var(--size-l);
 	@media (max-width: $bp-m-maxWidth) {

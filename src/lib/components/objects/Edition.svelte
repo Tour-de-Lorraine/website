@@ -10,12 +10,12 @@
 
 	const {data, ...attributes} = $props();
 
-	const details = data?.details?.map((detail) => {
+	const details = $derived(data?.details?.map((detail) => {
 		if (detail?.item?.type === 'ele_details__drawer') {
 			detail.item.isOpen = true;
 		}
 		return detail;
-	});
+	}));
 </script>
 
 <div class="EDITION" {...attributes}>

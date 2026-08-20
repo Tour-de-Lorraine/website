@@ -5,7 +5,7 @@ import preprocess from 'svelte-preprocess';
 const config = {
 	preprocess: preprocess({
 		scss: {
-			prependData: `@import "./src/lib/styles/breakpoints.scss";`,
+			prependData: `@use "./src/lib/styles/breakpoints" as *;`,
 		},
 	}),
 	kit: {
@@ -15,7 +15,7 @@ const config = {
 			strict: false
 		}),
 		prerender: {
-			entries: []
+			entries: ['/sitemap.xml', '/robots.txt']
 		}
 	},
 };

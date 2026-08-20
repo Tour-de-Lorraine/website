@@ -9,8 +9,8 @@
 	import FormatedText from '$lib/components/objects/FormatedText.svelte';
 
 	const {data} = $props();
-	const {details, issues, images, videos, attributes, categories} = data;
-	const {title, description} = data.translations[0];
+	const {details, issues, images, videos, attributes, categories} = $derived(data);
+	const {title, description} = $derived(data.translations[0]);
 </script>
 
 <Page {data}>

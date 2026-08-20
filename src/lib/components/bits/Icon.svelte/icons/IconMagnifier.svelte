@@ -1,6 +1,5 @@
 <script>
-	const props = $props();
-	const attributes = props?.attributes || {};
+	const {attributes = {}} = $props();
 </script>
 
 <svg

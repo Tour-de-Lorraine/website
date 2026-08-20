@@ -3,11 +3,8 @@
 	import Header from './Header.svelte';
 	import Hero from './Hero.svelte';
 
-	const props = $props();
-	const children = props?.children;
-
-	const data = props.data;
-	const {title = '', description = ''} = data?.metaTranslations?.[0] || {};
+	const {data, children} = $props();
+	const {title = '', description = ''} = $derived(data?.metaTranslations?.[0] || {});
 </script>
 
 <svelte:head>

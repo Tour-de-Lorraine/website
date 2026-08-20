@@ -3,7 +3,7 @@
 	import Edition from '$lib/components/objects/Edition.svelte';
 	const {data} = $props();
 
-	const edition = data?.edition;
+	const edition = $derived(data?.edition);
 </script>
 
 <Page {data}>

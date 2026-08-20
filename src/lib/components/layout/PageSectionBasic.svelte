@@ -5,8 +5,8 @@
 	import Anchor from '../bits/Anchor.svelte';
 	const {data} = $props();
 
-	const {title, formatedText, slug} = data?.translations?.[0] || {};
-	const {details, images} = data;
+	const {title, formatedText, slug} = $derived(data?.translations?.[0] || {});
+	const {details, images} = $derived(data || {});
 </script>
 
 <section class="PAGE-SECTION">

@@ -1,2 +1,2 @@
-@import './webComponents/drawer.scss';
-@import './webComponents/gallery.scss';
+@use 'webComponents/drawer' as *;
+@use 'webComponents/gallery' as *;

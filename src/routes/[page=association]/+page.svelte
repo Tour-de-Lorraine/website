@@ -4,8 +4,7 @@
 	import Hero from '$lib/components/layout/Hero.svelte';
 	import TdlVisual from '$lib/components/objects/TdlVisual.svelte';
 
-	const props = $props();
-	const data = props.data;
+	const {data} = $props();
 </script>
 
 <Page {data}>

@@ -4,10 +4,9 @@
 	import DetailsList from '$lib/components/objects/DetailsList.svelte';
 	import PageSections from '$lib/components/layout/PageSections.svelte';
 	import Icon from '$lib/components/bits/Icon.svelte';
-	const props = $props();
-	const data = props.data;
-	const archived = data?.archived || [];
-	const translations = data?.additionalContent?.translations?.[0] || {};
+	const {data} = $props();
+	const archived = $derived(data?.archived || []);
+	const translations = $derived(data?.additionalContent?.translations?.[0] || {});
 </script>
 
 <Page {data}>

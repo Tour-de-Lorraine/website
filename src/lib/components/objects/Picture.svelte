@@ -1,18 +1,18 @@
 <script>
 	const {data, size = 'normal'} = $props();
-	const {image} = data || {};
-	const translations = data?.translations?.[0] || {};
-	const {caption, altText} = translations;
-	const {focalPointX, focalPointY, height, width} = image || {};
-	const aspectRatio = (width / height).toFixed(2);
+	const {image} = $derived(data || {});
+	const translations = $derived(data?.translations?.[0] || {});
+	const {caption, altText} = $derived(translations);
+	const {focalPointX, focalPointY, height, width} = $derived(image || {});
+	const aspectRatio = $derived((width / height).toFixed(2));
 
 	const calcObjectPosition = (focalPointX, focalPointY) => {
 		if (typeof focalPointX !== 'number' || typeof focalPointY !== 'number') return '';
 		return `${~~((focalPointX / width) * 100)}% ${~~((focalPointY / height) * 100)}%`;
 	};
 
-	const objectPosition = calcObjectPosition(focalPointX, focalPointY);
-	const src = `/assets/${image?.id}`;
+	const objectPosition = $derived(calcObjectPosition(focalPointX, focalPointY));
+	const src = $derived(`/assets/${image?.id}`);
 </script>
 
 <figure

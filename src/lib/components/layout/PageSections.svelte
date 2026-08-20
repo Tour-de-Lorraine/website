@@ -1,8 +1,6 @@
 <script>
 	import PageSectionBasic from './PageSectionBasic.svelte';
-	const props = $props();
-	const children = props?.children;
-	const data = props?.data || [];
+	const {children, data = []} = $props();
 </script>
 
 <div class="PAGE-SECTIONS">

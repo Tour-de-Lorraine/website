@@ -3,10 +3,10 @@
 	import Video from '../objects/Video.svelte';
 	const {children, data, ...attributes} = $props();
 
-	const gotData = typeof data === 'object' && Array.isArray(data) === false && data !== null;
+	const gotData = $derived(typeof data === 'object' && Array.isArray(data) === false && data !== null);
 
-	const imageFromData = gotData && 'image' in data;
-	const videoFromData = gotData && data?.useVideo && 'video' in data && data?.useVideo;
+	const imageFromData = $derived(gotData && 'image' in data);
+	const videoFromData = $derived(gotData && data?.useVideo && 'video' in data && data?.useVideo);
 </script>
 
 <div class="HERO" {...attributes} data-has-video={videoFromData}>

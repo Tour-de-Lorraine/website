@@ -2,7 +2,7 @@
 	import Badge from '../bits/Badge.svelte';
 	let {data} = $props();
 
-	let attributes = data.map((attr) => attr.junction);
+	const attributes = $derived(data.map((attr) => attr.junction));
 </script>
 
 <ul class="EVENT-ATTRIBUTES" data-as="badges-list" aria-label="Zugänglichkeit des Events">

@@ -55,7 +55,7 @@
 		return done;
 	}
 
-	const text = typeof data === 'string' ? remapHeadings(data, headerRemap) : '';
+	const text = $derived(typeof data === 'string' ? remapHeadings(data, headerRemap) : '');
 </script>
 
 <div class="FORMATED-TEXT">

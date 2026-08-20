@@ -2,7 +2,7 @@
 	import Picture from './Picture.svelte';
 	import Video from './Video.svelte';
 	const {data} = $props();
-	const {image, useVideo} = data || {};
+	const {image, useVideo} = $derived(data || {});
 </script>
 
 <div class="VISUAL" data-type={useVideo ? 'video' : 'image'}>

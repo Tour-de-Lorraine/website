@@ -1,4 +1,10 @@
-@import './breakpoints.scss';
+@use 'breakpoints' as *;
+@use 'elements/box' as *;
+@use 'elements/link' as *;
+@use 'elements/placeholder' as *;
+@use 'elements/screenreader' as *;
+@use 'elements/ellipse' as *;
+@use 'elements/badgesList' as *;
 
 /*  ELEMENTS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -34,10 +40,3 @@
 
 /*  OTHER
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-@import './elements/box.scss';
-@import './elements/link.scss';
-@import './elements/placeholder.scss';
-@import './elements/screenreader.scss';
-@import './elements/ellipse.scss';
-@import './elements/badgesList.scss';

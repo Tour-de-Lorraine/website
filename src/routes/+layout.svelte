@@ -13,14 +13,13 @@
 	import Favicon from '$lib/components/bits/Favicon.svelte';
 	import {onMount, setContext} from 'svelte';
 
-	const props = $props();
-	const {settings = {}, navigation = {}, currentEdition = null} = props?.data || {};
-	const children = props?.children;
+	const {data = {}, children} = $props();
+	const {settings = {}, navigation = {}, currentEdition = null} = $derived(data || {});
 
 	setContext('site', {
-		navigation,
-		settings,
-		currentEdition: currentEdition,
+		get navigation() { return data?.navigation || {}; },
+		get settings() { return data?.settings || {}; },
+		get currentEdition() { return data?.currentEdition || null; },
 	});
 
 	$effect(() => {

@@ -1,6 +1,6 @@
 <script>
 	const {data} = $props();
-	const categories = data.map((cat) => cat.junction.translations[0]);
+	const categories = $derived(data.map((cat) => cat.junction.translations[0]));
 </script>
 
 <ul class="EVENT-CATEGORIES">

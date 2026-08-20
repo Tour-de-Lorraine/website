@@ -20,7 +20,7 @@
 		x: X,
 	};
 
-	const Icon = icons?.[name];
+	const Icon = $derived(icons?.[name]);
 </script>
 
 <div class="icon _{name}">

@@ -3,7 +3,7 @@
 	const {icon, text = ''} = $props();
 </script>
 
-<button class="BADGE" data-text={text} role="hidden" tabindex="0">
+<button class="BADGE" data-text={text} aria-label={text}>
 	<Icon name={icon}></Icon>
 </button>
 

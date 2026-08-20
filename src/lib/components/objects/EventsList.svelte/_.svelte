@@ -13,7 +13,7 @@
 		else return data.all;
 	});
 
-	const hasEvents = data?.all?.length > 0;
+	const hasEvents = $derived(data?.all?.length > 0);
 </script>
 
 <div class="EVENTS-LIST" data-is-filtered={isFiltered} data-has-events={hasEvents}>

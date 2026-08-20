@@ -1,13 +1,16 @@
 <script>
 	const {data, attributes = {}} = $props();
-	const video = data?.video?.translations?.[0] || {};
-	const image = data?.image.image || {};
-	const {title, caption, altText, videoLarge, videoMiddle, videoSmall} = video;
+	const video = $derived(data?.video?.translations?.[0] || {});
+	const image = $derived(data?.image.image || {});
+	const {title, caption, altText, videoLarge, videoMiddle, videoSmall} = $derived(video);
 
-	const responsiveVideos = [];
-	if (videoLarge !== null) responsiveVideos.push('l');
-	if (videoMiddle !== null) responsiveVideos.push('m');
-	if (videoSmall !== null) responsiveVideos.push('s');
+	const responsiveVideos = $derived.by(() => {
+		const result = [];
+		if (videoLarge !== null) result.push('l');
+		if (videoMiddle !== null) result.push('m');
+		if (videoSmall !== null) result.push('s');
+		return result;
+	});
 
 	function load(N) {
 		N.children[0].src = N.dataset.src;
