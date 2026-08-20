@@ -1,4 +1,4 @@
-import { a as push, d as ensure_array_like, c as attr, e as escape_html, p as pop } from "./index2.js";
+import { d as ensure_array_like, c as attr, e as escape_html } from "./root.js";
 import { _ } from "./PageSections.js";
 function formatDate(dateStr) {
   const date = new Date(dateStr);
@@ -14,101 +14,112 @@ function formatTime(timeStr) {
   const [hours, minutes] = timeStr.split(":");
   return `${hours}:${minutes}`;
 }
-function EventIssues($$payload, $$props) {
-  push();
-  const { data } = $$props;
-  function datetime($$payload2, { dateStart, dateEnd, timeStart, timeEnd }) {
-    $$payload2.out += `<span class="_dates">`;
-    if (dateStart) {
-      $$payload2.out += "<!--[-->";
-      $$payload2.out += `<span class="_start">${escape_html(formatDate(dateStart))}</span>`;
-    } else {
-      $$payload2.out += "<!--[!-->";
-    }
-    $$payload2.out += `<!--]-->`;
-    if (dateEnd) {
-      $$payload2.out += "<!--[-->";
-      $$payload2.out += `<span class="_end">${escape_html(formatDate(dateEnd))}</span>`;
-    } else {
-      $$payload2.out += "<!--[!-->";
-    }
-    $$payload2.out += `<!--]--></span>`;
-    if (timeStart || timeEnd) {
-      $$payload2.out += "<!--[-->";
-      $$payload2.out += `, <span class="_times">`;
-      if (timeStart) {
-        $$payload2.out += "<!--[-->";
-        $$payload2.out += `<span class="_start">${escape_html(formatTime(timeStart))}</span>`;
-      } else {
-        $$payload2.out += "<!--[!-->";
-      }
-      $$payload2.out += `<!--]-->`;
-      if (timeEnd) {
-        $$payload2.out += "<!--[-->";
-        $$payload2.out += `<span class="_end">${escape_html(formatTime(timeEnd))}</span>`;
-      } else {
-        $$payload2.out += "<!--[!-->";
-      }
-      $$payload2.out += `<!--]--></span>`;
-    } else {
-      $$payload2.out += "<!--[!-->";
-    }
-    $$payload2.out += `<!--]-->`;
+function datetime($$renderer, { dateStart, dateEnd, timeStart, timeEnd }) {
+  $$renderer.push(`<span class="_dates">`);
+  if (dateStart) {
+    $$renderer.push("<!--[0-->");
+    $$renderer.push(`<span class="_start">${escape_html(formatDate(dateStart))}</span>`);
+  } else {
+    $$renderer.push("<!--[-1-->");
   }
-  const each_array = ensure_array_like(data);
-  $$payload.out += `<ul class="EVENT-ISSUES svelte-13qdx8m"><!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    const issue = each_array[$$index];
-    $$payload.out += `<li class="svelte-13qdx8m"><div class="_dateTimes svelte-13qdx8m">`;
-    datetime($$payload, issue);
-    $$payload.out += `<!----></div> <div class="_location svelte-13qdx8m">`;
-    if (issue.locationUrl) {
-      $$payload.out += "<!--[-->";
-      $$payload.out += `<a${attr("href", issue.locationUrl)} data-as="link-1">${escape_html(issue.location)}</a>`;
-    } else {
-      $$payload.out += "<!--[!-->";
-      $$payload.out += `${escape_html(issue.location)}`;
-    }
-    $$payload.out += `<!--]--></div></li>`;
+  $$renderer.push(`<!--]-->`);
+  if (dateEnd) {
+    $$renderer.push("<!--[0-->");
+    $$renderer.push(`<span class="_end">${escape_html(formatDate(dateEnd))}</span>`);
+  } else {
+    $$renderer.push("<!--[-1-->");
   }
-  $$payload.out += `<!--]--></ul>`;
-  pop();
+  $$renderer.push(`<!--]--></span>`);
+  if (timeStart || timeEnd) {
+    $$renderer.push("<!--[0-->");
+    $$renderer.push(`, <span class="_times">`);
+    if (timeStart) {
+      $$renderer.push("<!--[0-->");
+      $$renderer.push(`<span class="_start">${escape_html(formatTime(timeStart))}</span>`);
+    } else {
+      $$renderer.push("<!--[-1-->");
+    }
+    $$renderer.push(`<!--]-->`);
+    if (timeEnd) {
+      $$renderer.push("<!--[0-->");
+      $$renderer.push(`<span class="_end">${escape_html(formatTime(timeEnd))}</span>`);
+    } else {
+      $$renderer.push("<!--[-1-->");
+    }
+    $$renderer.push(`<!--]--></span>`);
+  } else {
+    $$renderer.push("<!--[-1-->");
+  }
+  $$renderer.push(`<!--]-->`);
 }
-function Badge($$payload, $$props) {
+function EventIssues($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    const { data } = $$props;
+    $$renderer2.push(`<ul class="EVENT-ISSUES svelte-yeh1kn"><!--[-->`);
+    const each_array = ensure_array_like(
+      // function formatDatetime({dateStart, dateEnd, timeStart, timeEnd}) {
+      // 	const _dateStart = formatDate(dateStr);
+      // 	const _timeStart = formatTime(timeStr);
+      // 	let output = date;
+      // 	if (_timeStart?.length > 0) output += `, ${time}`;
+      // 	return output;
+      // }
+      // const timeStart = data?.startTime ? formatTime(data.endTime) : '';
+      // const timeEnd = data?.endTime ? `bis ${formatTime(data.endTime)}` : '';
+      data
+    );
+    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+      let issue = each_array[$$index];
+      $$renderer2.push(`<li class="svelte-yeh1kn"><div class="_dateTimes svelte-yeh1kn">`);
+      datetime($$renderer2, issue);
+      $$renderer2.push(`<!----></div> <div class="_location svelte-yeh1kn">`);
+      if (issue.locationUrl) {
+        $$renderer2.push("<!--[0-->");
+        $$renderer2.push(`<a${attr("href", issue.locationUrl)} data-as="link-1">${escape_html(issue.location)}</a>`);
+      } else {
+        $$renderer2.push("<!--[-1-->");
+        $$renderer2.push(`${escape_html(issue.location)}`);
+      }
+      $$renderer2.push(`<!--]--></div></li>`);
+    }
+    $$renderer2.push(`<!--]--></ul>`);
+  });
+}
+function Badge($$renderer, $$props) {
   const { icon, text = "" } = $$props;
-  $$payload.out += `<button class="BADGE svelte-1r4xf0j"${attr("data-text", text)} role="hidden" tabindex="0">`;
-  _($$payload, { name: icon });
-  $$payload.out += `<!----></button>`;
+  $$renderer.push(`<button class="BADGE svelte-mclxv0"${attr("data-text", text)} role="hidden" tabindex="0">`);
+  _($$renderer, { name: icon });
+  $$renderer.push(`<!----></button>`);
 }
-function EventAttributes($$payload, $$props) {
-  push();
-  let { data } = $$props;
-  let attributes = data.map((attr2) => attr2.junction);
-  const each_array = ensure_array_like(attributes);
-  $$payload.out += `<ul class="EVENT-ATTRIBUTES" data-as="badges-list" aria-label="Zugänglichkeit des Events"><!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    const { iconKey, translations } = each_array[$$index];
-    const text = `Dieser Event ist ${translations[0].name}`;
-    $$payload.out += `<li class="_attribute"${attr("aria-label", text)}>`;
-    Badge($$payload, { icon: iconKey, text });
-    $$payload.out += `<!----></li>`;
-  }
-  $$payload.out += `<!--]--></ul>`;
-  pop();
+function EventAttributes($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    let { data } = $$props;
+    let attributes = data.map((attr2) => attr2.junction);
+    $$renderer2.push(`<ul class="EVENT-ATTRIBUTES" data-as="badges-list" aria-label="Zugänglichkeit des Events"><!--[-->`);
+    const each_array = ensure_array_like(attributes);
+    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+      let { iconKey, translations } = each_array[$$index];
+      const text = `Dieser Event ist ${translations[0].name}`;
+      $$renderer2.push(`<li class="_attribute"${attr("aria-label", text)}>`);
+      Badge($$renderer2, { icon: iconKey, text });
+      $$renderer2.push(`<!----></li>`);
+    }
+    $$renderer2.push(`<!--]--></ul>`);
+  });
 }
-function EventCategories($$payload, $$props) {
-  push();
-  const { data } = $$props;
-  const categories = data.map((cat) => cat.junction.translations[0]);
-  const each_array = ensure_array_like(categories);
-  $$payload.out += `<ul class="EVENT-CATEGORIES svelte-gyax80"><!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    const category = each_array[$$index];
-    const { name } = category || {};
-    $$payload.out += `<li class="svelte-gyax80">${escape_html(name)}</li>`;
-  }
-  $$payload.out += `<!--]--></ul>`;
-  pop();
+function EventCategories($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    const { data } = $$props;
+    const categories = data.map((cat) => cat.junction.translations[0]);
+    $$renderer2.push(`<ul class="EVENT-CATEGORIES svelte-1shy7zv"><!--[-->`);
+    const each_array = ensure_array_like(categories);
+    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
+      let category = each_array[$$index];
+      const { name } = category || {};
+      $$renderer2.push(`<li class="svelte-1shy7zv">${escape_html(name)}</li>`);
+    }
+    $$renderer2.push(`<!--]--></ul>`);
+  });
 }
 export {
   EventIssues as E,

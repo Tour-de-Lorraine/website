@@ -103,7 +103,7 @@ const options = {
     app: ({ head, body, assets, nonce, env }) => '<!doctype html>\n<html lang="de" id="scroll">\n	<head>\n		<meta charset="utf-8" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + '</div>\n		<script type="text/javascript" defer src="/assets/webComponents/drawerGroup.js"><\/script>\n		<script type="text/javascript" defer src="/assets/webComponents/drawer.js"><\/script>\n		<script type="text/javascript" defer src="/assets/webComponents/gallery.js"><\/script>\n	</body>\n</html>\n',
     error
   },
-  version_hash: "w8z3fg"
+  version_hash: "j273oe"
 };
 async function get_hooks() {
   let handle;

@@ -3,8 +3,6 @@
 	const {image} = data || {};
 	const translations = data?.translations?.[0] || {};
 	const {caption, altText} = translations;
-	debugger;
-	console.log('test:' + data + ':' + translations);
 	const {focalPointX, focalPointY, height, width} = image || {};
 	const aspectRatio = (width / height).toFixed(2);
 
@@ -17,7 +15,6 @@
 	const src = `/assets/${image?.id}`;
 </script>
 
-<div>Test: {image}</div>
 <figure
 	class="PICTURE"
 	style:---aspect-ratio={aspectRatio}

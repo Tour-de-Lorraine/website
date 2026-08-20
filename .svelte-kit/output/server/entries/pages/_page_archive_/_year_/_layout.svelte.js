@@ -1,17 +1,15 @@
-import { p as pop, a as push } from "../../../../chunks/index2.js";
-function _layout($$payload, $$props) {
-  push();
+import "clsx";
+function _layout($$renderer, $$props) {
   const { children } = $$props;
-  $$payload.out += `<div class="banner _archive svelte-1nyplgu"><div class="_inner">Archiv</div></div> `;
+  $$renderer.push(`<div class="banner _archive svelte-1rhejr8"><div class="_inner">Archiv</div></div> `);
   if (children) {
-    $$payload.out += "<!--[-->";
-    children($$payload);
-    $$payload.out += `<!---->`;
+    $$renderer.push("<!--[0-->");
+    children($$renderer);
+    $$renderer.push(`<!---->`);
   } else {
-    $$payload.out += "<!--[!-->";
+    $$renderer.push("<!--[-1-->");
   }
-  $$payload.out += `<!--]-->`;
-  pop();
+  $$renderer.push(`<!--]-->`);
 }
 export {
   _layout as default

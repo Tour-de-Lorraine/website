@@ -1,16 +1,17 @@
-import { p as pop, a as push } from "../../../chunks/index2.js";
+import "clsx";
 import { P as Page, a as PageSections } from "../../../chunks/PageSections.js";
-function _page($$payload, $$props) {
-  push();
-  const props = $$props;
-  const data = props.data;
-  Page($$payload, {
-    data,
-    children: ($$payload2) => {
-      PageSections($$payload2, { data: data?.sections || [] });
-    }
+function _page($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    const { $$slots, $$events, ...props } = $$props;
+    const data = props.data;
+    Page($$renderer2, {
+      data,
+      children: ($$renderer3) => {
+        PageSections($$renderer3, { data: data?.sections || [] });
+      },
+      $$slots: { default: true }
+    });
   });
-  pop();
 }
 export {
   _page as default

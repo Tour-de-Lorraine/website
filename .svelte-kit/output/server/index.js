@@ -1,4 +1,5 @@
 import { E as ENDPOINT_METHODS, P as PAGE_METHODS, i as negotiate, m as method_not_allowed, h as handle_error_and_jsonify, j as get_status, k as is_form_content_type, l as normalize_error, o as create_replacer, b as noop, q as get_global_name, r as serialize_uses, t as clarify_devalue_error, u as get_node_type, v as escape_html, g as create_remote_key, p as parse_remote_arg, w as deserialize_binary_form, e as stringify, x as split_remote_key, S as SVELTE_KIT_ASSETS, y as static_error_page, z as redirect_response, A as once, B as has_prerendered_path, C as get_set_cookies, T as TRAILING_SLASH_PARAM, I as INVALIDATED_PARAM, D as handle_fatal_error, F as format_server_error } from "./chunks/utils.js";
+import { b as browser } from "./chunks/root.js";
 import { json, text, error, isRedirect } from "@sveltejs/kit";
 import { Redirect, SvelteKitError, ActionFailure, HttpError } from "@sveltejs/kit/internal";
 import { with_request_store, merge_tracing, try_get_request_store } from "@sveltejs/kit/internal/server";
@@ -10,7 +11,6 @@ import { r as readable, w as writable } from "./chunks/index.js";
 import { p as public_env, r as read_implementation, o as options, s as set_private_env, a as set_public_env, g as get_hooks, b as set_read_implementation } from "./chunks/internal.js";
 import { parse, serialize } from "cookie";
 import * as set_cookie_parser from "set-cookie-parser";
-const browser = false;
 const s = JSON.stringify;
 function with_resolvers() {
   let resolve2;
@@ -1992,7 +1992,7 @@ async function render_response({
       csp: csp.script_needs_nonce ? { nonce: csp.nonce } : { hash: csp.script_needs_hash },
       transformError: error_components ? (
         /** @param {unknown} e */
-        async (e) => {
+        (async (e) => {
           if (isRedirect(e)) {
             throw e;
           }
@@ -2000,7 +2000,7 @@ async function render_response({
           props.page.error = props.error = error2 = transformed2;
           props.page.status = status = get_status(e);
           return transformed2;
-        }
+        })
       ) : void 0
     };
     const fetch2 = globalThis.fetch;

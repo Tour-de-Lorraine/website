@@ -1,9 +1,9 @@
-import { t as noop, v as getContext } from "./index2.js";
+import { n as noop, m as getContext } from "./root.js";
+import "clsx";
 import "@sveltejs/kit/internal";
 import "./exports.js";
 import "./utils2.js";
 import "@sveltejs/kit/internal/server";
-import "./root.js";
 const is_legacy = noop.toString().includes("$$") || /function \w+\(\) \{\}/.test(noop.toString());
 const placeholder_url = "a:";
 if (is_legacy) {

@@ -1,39 +1,35 @@
-import { p as pop, a as push, e as escape_html } from "../../../../../../chunks/index2.js";
+import { e as escape_html } from "../../../../../../chunks/root.js";
+import "clsx";
 import { P as Page, a as PageSections, D as DetailsList, F as FormatedText } from "../../../../../../chunks/PageSections.js";
 import { E as EventIssues, a as EventCategories, b as EventAttributes } from "../../../../../../chunks/EventCategories.js";
-function _page($$payload, $$props) {
-  push();
-  const { data } = $$props;
-  const {
-    details,
-    issues,
-    images,
-    videos,
-    attributes,
-    categories
-  } = data;
-  const { title, description } = data.translations[0];
-  Page($$payload, {
-    data,
-    children: ($$payload2) => {
-      PageSections($$payload2, {
-        children: ($$payload3) => {
-          $$payload3.out += `<article class="_event svelte-1sb5x9d" data-layout="1-1 rsp-1 sticky-col-1"><div class="column _1"><header class="svelte-1sb5x9d"><h2>${escape_html(title)}</h2> `;
-          EventIssues($$payload3, { data: issues });
-          $$payload3.out += `<!----> `;
-          EventCategories($$payload3, { data: categories });
-          $$payload3.out += `<!----> `;
-          EventAttributes($$payload3, { data: attributes });
-          $$payload3.out += `<!----></header> `;
-          DetailsList($$payload3, { data: details });
-          $$payload3.out += `<!----></div> <div class="column _2">`;
-          FormatedText($$payload3, { data: description });
-          $$payload3.out += `<!----></div></article>`;
-        }
-      });
-    }
+function _page($$renderer, $$props) {
+  $$renderer.component(($$renderer2) => {
+    const { data } = $$props;
+    const { details, issues, images, videos, attributes, categories } = data;
+    const { title, description } = data.translations[0];
+    Page($$renderer2, {
+      data,
+      children: ($$renderer3) => {
+        PageSections($$renderer3, {
+          children: ($$renderer4) => {
+            $$renderer4.push(`<article class="_event svelte-3znmls" data-layout="1-1 rsp-1 sticky-col-1"><div class="column _1"><header class="svelte-3znmls"><h2>${escape_html(title)}</h2> `);
+            EventIssues($$renderer4, { data: issues });
+            $$renderer4.push(`<!----> `);
+            EventCategories($$renderer4, { data: categories });
+            $$renderer4.push(`<!----> `);
+            EventAttributes($$renderer4, { data: attributes });
+            $$renderer4.push(`<!----></header> `);
+            DetailsList($$renderer4, { data: details });
+            $$renderer4.push(`<!----></div> <div class="column _2">`);
+            FormatedText($$renderer4, { data: description });
+            $$renderer4.push(`<!----></div></article>`);
+          },
+          $$slots: { default: true }
+        });
+      },
+      $$slots: { default: true }
+    });
   });
-  pop();
 }
 export {
   _page as default
