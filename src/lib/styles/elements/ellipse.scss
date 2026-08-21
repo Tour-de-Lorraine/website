@@ -1,0 +1,10 @@
+:root {
+	--ellipse-padding-x: 2em;
+	--ellipse-padding-y: 0.2em;
+	--ellipse-padding: var(--ellipse-padding-y) var(--ellipse-padding-x);
+}
+
+[data-as~='ellipse'] {
+	border-radius: 50%;
+	padding: var(--ellipse-padding);
+}

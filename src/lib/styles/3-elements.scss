@@ -1,0 +1,42 @@
+@use 'breakpoints' as *;
+@use 'elements/box' as *;
+@use 'elements/link' as *;
+@use 'elements/placeholder' as *;
+@use 'elements/screenreader' as *;
+@use 'elements/ellipse' as *;
+@use 'elements/badgesList' as *;
+
+/*  ELEMENTS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+:root {
+	--icon-size-s: 2.4rem;
+	--icon-size-m: 2rem;
+
+	--box-padding-x: var(--size-s);
+	--box-padding-y: var(--size-s);
+
+	--box-padding: var(--box-padding-y) var(--box-padding-x);
+
+	--box-padding-s: var(--size-xs);
+	--box-padding-m: var(--size-m);
+
+	--line-width: 1.2px;
+	--line-45deg-width: 2px;
+
+	--figcaption-fontSize: var(--font-size-s);
+
+	@media (-webkit-min-device-pixel-ratio: 2) {
+		--line-width: 1px;
+	}
+
+	@media (width <= $bp-s-maxWidth) {
+		--line-width: 1.2px;
+		@media (-webkit-min-device-pixel-ratio: 2) {
+			--line-width: 1px;
+		}
+	}
+}
+
+/*  OTHER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
