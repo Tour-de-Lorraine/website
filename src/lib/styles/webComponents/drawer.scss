@@ -68,7 +68,7 @@ c-drawer[data-lines~='all'] summary::after {
 // prettier-ignore
 c-drawer[data-lines~='bottom'] + c-drawer[data-lines~='top']::before,
 c-drawer[data-lines~='all'] + c-drawer[data-lines~='top']::before,
-c-drawer[data-lines~='bottom'] + c-drawer[data-lines~='all']::before
+c-drawer[data-lines~='bottom'] + c-drawer[data-lines~='all']::before,
 c-drawer[data-lines~='all'] + c-drawer[data-lines~='all']::before {
 	content: unset;
 }
