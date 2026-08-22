@@ -3,6 +3,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
 	plugins: [sveltekit()],
+	build: {
+		cssMinify: 'esbuild'
+	},
 	server: {
 		port: 3000,
 		proxy: {
