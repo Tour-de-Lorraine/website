@@ -9,7 +9,7 @@ translations(${translationsFilter}) {
     slug
 }
 images {
-    eleImagesId: ele_images_id {
+    ele_images_id {
         ${imageFields}
     }
 }
