@@ -80,9 +80,7 @@
 
 						<div class="column _2">
 							<div class="_visual">
-								TTT: {visual}
 								{#if visual?.image}
-									KKKkkk
 									<Picture data={visual?.image}></Picture>
 								{/if}
 							</div>

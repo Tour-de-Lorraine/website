@@ -3,6 +3,7 @@
 	import Icon from '../bits/Icon.svelte';
 	import Images from './Images.svelte';
 	import FormatedText from './FormatedText.svelte';
+	import {getDirectusFileUrl} from '$lib/directus/assetUrl.js';
 	const {data, childrenBefore, childrenAfter} = $props();
 </script>
 
@@ -54,7 +55,7 @@
 			{@const pdf = item?.pdf?.translations?.[0] || {}}
 
 			<a
-				href="/assets/{pdf?.file?.id}"
+				href={getDirectusFileUrl(pdf?.file?.id)}
 				title="'{pdf?.title}' PDF-Datei in neuem Tab öffnen."
 				target="_blank"
 			>

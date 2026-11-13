@@ -1,0 +1,13 @@
+RewriteEngine On
+
+# Skip if request already ends in .html
+RewriteCond %{REQUEST_URI} !\.html$
+
+# Skip if request is a directory that already has an index.html
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Skip if the .html file doesn't actually exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}\.html -f
+
+RewriteRule ^(.*)$ $1.html [L]

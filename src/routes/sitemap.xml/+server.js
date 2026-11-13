@@ -1,3 +1,5 @@
+export const prerender = true;
+
 import {directusGraphql} from '$lib/directus/index.js';
 import safeFetch from '$lib/directus/safeFetch.js';
 import sitemapQuery from '$lib/directus/queries/sitemap.js';

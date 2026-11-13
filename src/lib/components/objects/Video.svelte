@@ -1,4 +1,6 @@
 <script>
+	import {getDirectusFileUrl} from '$lib/directus/assetUrl.js';
+
 	const {data, attributes = {}} = $props();
 	const video = $derived(data?.video?.translations?.[0] || {});
 	const image = $derived(data?.image.image || {});
@@ -36,7 +38,7 @@
 			muted
 			autoplay
 			playsinline
-			data-src="/assets/{video.id}"
+			data-src={getDirectusFileUrl(video.id)}
 			oncanplay={(e) => (e.target.dataset.canPlayThrough = true)}
 			{...attributes}
 			height="1000"
@@ -63,7 +65,7 @@
 	{/if}
 
 	<picture>
-		<img src="/assets/{image.id}" alt={altText} />
+		<img src={getDirectusFileUrl(image.id)} alt={altText} />
 	</picture>
 
 	<figcaption>{caption?.length ? caption : ''}</figcaption>

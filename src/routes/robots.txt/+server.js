@@ -1,3 +1,5 @@
+export const prerender = true;
+
 const SITE_URL = 'https://www.tourdelorraine.ch';
 
 export async function GET() {

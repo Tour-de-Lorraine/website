@@ -1,5 +1,13 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
+import {readFileSync} from 'fs';
+
+let prerenderEntries;
+try {
+	prerenderEntries = JSON.parse(readFileSync('./prerender-entries.json', 'utf-8'));
+} catch {
+	prerenderEntries = ['/'];
+}
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -9,13 +17,16 @@ const config = {
 		},
 	}),
 	kit: {
-		adapter: adapter({
-			fallback: 'index.html',
-			precompress: false,
-			strict: false
-		}),
+		adapter: adapter(),
+		paths: {
+			relative: false
+		},
 		prerender: {
-			entries: ['/sitemap.xml', '/robots.txt']
+			entries: prerenderEntries,
+			handleHttpError: ({path, message}) => {
+				console.warn(`⚠️  Prerender warning: ${message}`);
+				return;
+			}
 		}
 	},
 };

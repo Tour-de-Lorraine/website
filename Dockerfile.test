@@ -1,0 +1,19 @@
+FROM httpd:2.4-alpine
+
+# Enable mod_rewrite for .htaccess support
+RUN sed -i '/LoadModule rewrite_module/s/^#//g' /usr/local/apache2/conf/httpd.conf
+
+# Create a custom config to allow .htaccess files
+RUN echo '<Directory "/usr/local/apache2/htdocs">' > /usr/local/apache2/conf/extra/htaccess.conf && \
+    echo '    Options Indexes FollowSymLinks' >> /usr/local/apache2/conf/extra/htaccess.conf && \
+    echo '    AllowOverride All' >> /usr/local/apache2/conf/extra/htaccess.conf && \
+    echo '    Require all granted' >> /usr/local/apache2/conf/extra/htaccess.conf && \
+    echo '</Directory>' >> /usr/local/apache2/conf/extra/htaccess.conf
+
+# Include the custom config
+RUN echo 'Include conf/extra/htaccess.conf' >> /usr/local/apache2/conf/httpd.conf
+
+# Copy build output
+COPY build/ /usr/local/apache2/htdocs/
+
+EXPOSE 80
