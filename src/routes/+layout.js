@@ -1,7 +1,5 @@
 import fetchSite from '$lib/directus/fetchSite';
 
-export const prerender = true;
-
 export async function load() {
 	try {
 		const data = await fetchSite();

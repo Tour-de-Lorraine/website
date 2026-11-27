@@ -3,9 +3,8 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
-		"prebuild": "node scripts/generate-prerender-entries.js",
 		"build": "vite build",
-		"postbuild": "node scripts/generate-sitemap.js && node scripts/postbuild-fix-dirs.js",
+		"postbuild": "node scripts/generate-sitemap.js",
 		"preview": "vite preview",
 		"package": "svelte-kit sync && svelte-package && publint",
 		"prepublishOnly": "npm run package",

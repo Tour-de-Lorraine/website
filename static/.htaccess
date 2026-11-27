@@ -1,13 +1,12 @@
-RewriteEngine On
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
 
-# Skip if request already ends in .html
-RewriteCond %{REQUEST_URI} !\.html$
+    # Serve real files (JS, CSS, images, sitemap, robots.txt) directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
 
-# Skip if request is a directory that already has an index.html
-RewriteCond %{REQUEST_FILENAME} !-d
-
-# Skip if the .html file doesn't actually exist
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}\.html -f
-
-RewriteRule ^(.*)$ $1.html [L]
+    # Everything else -> index.html (let SvelteKit client router handle it)
+    RewriteRule ^ /index.html [L]
+</IfModule>
