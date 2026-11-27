@@ -11,12 +11,10 @@ const config = {
 	kit: {
 		adapter: adapter({
 			fallback: 'index.html',
-			precompress: false,
-			strict: false
 		}),
-		prerender: {
-			entries: ['/sitemap.xml', '/robots.txt']
-		}
+		paths: {
+			relative: false,
+		},
 	},
 };
 

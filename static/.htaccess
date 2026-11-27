@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+
+    # Serve real files (JS, CSS, images, sitemap, robots.txt) directly
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Everything else -> index.html (let SvelteKit client router handle it)
+    RewriteRule ^ /index.html [L]
+</IfModule>

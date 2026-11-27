@@ -1,3 +1,6 @@
+# Backups
+backups/
+
 # Environment variables
 .env
 
@@ -16,3 +19,4 @@ dist/
 # OS
 .DS_Store
 Thumbs.db
+prerender-entries.json

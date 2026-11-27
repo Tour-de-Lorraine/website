@@ -5,12 +5,16 @@
 </script>
 
 <div class="IMAGES">
-	<c-gallery mode={data.length > 1 ? 'slideshow' : 'singles'}>
+	<c-gallery mode={data?.length > 1 ? 'slideshow' : 'singles'}>
 		<div class="content" slot="images">
-			{#each data as eleImagesId}
-				PPP{eleImagesId}:{data[0]}
-				<Picture data={eleImagesId}></Picture>
-			{/each}
+			{#if data && data.length > 0}
+				{#each data as imageData, i}
+					{@const imageItem = imageData?.ele_images_id || imageData}
+					<Picture data={imageItem}></Picture>
+				{/each}
+			{:else}
+				<!-- No images -->
+			{/if}
 		</div>
 
 		<nav slot="navigation">

@@ -1,4 +1,6 @@
 <script>
+	import {getDirectusFileUrl} from '$lib/directus/assetUrl.js';
+
 	const {data, size = 'normal'} = $props();
 	const {image} = $derived(data || {});
 	const translations = $derived(data?.translations?.[0] || {});
@@ -12,7 +14,7 @@
 	};
 
 	const objectPosition = $derived(calcObjectPosition(focalPointX, focalPointY));
-	const src = $derived(`/assets/${image?.id}`);
+	const src = $derived(getDirectusFileUrl(image?.id));
 </script>
 
 <figure
